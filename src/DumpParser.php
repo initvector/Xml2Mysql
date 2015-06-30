@@ -6,9 +6,13 @@ class DumpParser {
     protected $maxInsertRows = 50;
 
     protected function prepareValue($value) {
-        $value = str_replace("\0", "\\0", $value);
+        $escapedValue = str_replace(
+            array('\\', "\0", "'", '"', "\n", "\r", "\t", '%'),
+            array('\\\\', "\\0", "''", '\\"', "\\n", "\\r", "\\t", "\\%"),
+            $value
+        );
 
-        return "'".preg_replace("/([\n\r\\'\"\032])/", '\\$1', $value)."'";
+        return "'$escapedValue'";
     }
 
     public function generateSql($xmlDump, $sqlOutput = false) {
