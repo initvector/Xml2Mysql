@@ -1,0 +1,9 @@
+{
+    "autoload": {
+      "psr-4": {
+        "Initvector\\Xml2Mysql\\": "src/"
+      }
+    },
+    "name": "initvector/xml2mysql",
+    "license": "GPLv2"
+}
