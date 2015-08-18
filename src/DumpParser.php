@@ -139,7 +139,7 @@ class DumpParser {
     }
 
     protected function outputInsert($tableName, $columns, $rows, $output = false, $force = false) {
-        if (count($rows) < $this->maxInsertRows || !$force) {
+        if (count($rows) < $this->maxInsertRows && !$force) {
             return false;
         }
 
